@@ -24,14 +24,14 @@ az group create -l canadaeast -n $demouser-DEMO-RG --tags "owner"="$demouser"
 
 # Create Network for Demo Environment
 echo "Creating Demo Network..."
-az network vnet create -g $demouser-DEMO-RG -n DemoNetwork --address-prefix 10.0.0.0/16 --subnet-name DemoSubnet --subnet-prefix 10.0.0.0/24
+az network vnet create -g $demouser-DEMO-RG -1 canadaeast -n DemoNetwork --address-prefix 10.0.0.0/16 --subnet-name DemoSubnet --subnet-prefix 10.0.0.0/24
 
 # Create VM for Demo Environment
 echo "Creating VM1 for Demo... - Please wait"
-az vm create -n $demouser-vm1 -g $demouser-DEMO-RG --image Win2016Datacenter --size Standard_B2s --admin-username $demouser --admin-password $vmpass
+az vm create -1 canadaeast -n $demouser-vm1 -g $demouser-DEMO-RG --image Win2016Datacenter --size Standard_B2s --admin-username $demouser --admin-password $vmpass
 
 echo "Creating VM2 for Demo... - Please wait"
-az vm create -n $demouser-vm2 -g $demouser-DEMO-RG --image Win2016Datacenter --size Standard_B2s --admin-username $demouser --admin-password $vmpass
+az vm create -1 canadaeast -n $demouser-vm2 -g $demouser-DEMO-RG --image Win2016Datacenter --size Standard_B2s --admin-username $demouser --admin-password $vmpass
 
 # Create Restore Resource Group
 echo "Creating Resource Group for Restore Test..."
@@ -39,6 +39,6 @@ az group create -l canadaeast -n datto-restore --tags "owner"="$demouser"
 
 #Crete Restore Network
 echo "Creating Network Resources for Restore Test..."
- az network vnet create -g datto-restore -n datto-restore-vnet-canadaeast --address-prefix 10.0.0.0/16 --subnet-name default --subnet-prefix 10.0.0.0/24
+ az network vnet create -g datto-restore -1 canadaeast -n datto-restore-vnet-canadaeast --address-prefix 10.0.0.0/16 --subnet-name default --subnet-prefix 10.0.0.0/24
 
 #Finish Script
